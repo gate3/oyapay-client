@@ -16,7 +16,7 @@ class AdminStore extends GenericStore {
     async adminSignUp (args) {
         this.isLoading = true
         try{
-            const result = await this.httpClient.post(this.apiRoutes.signUp,args)
+            const result = await this.httpClient.post(this.apiRoutes.signUp, args)
             if(result){
                 const {data} = result
                 runInAction(()=>this.isLoading = false)

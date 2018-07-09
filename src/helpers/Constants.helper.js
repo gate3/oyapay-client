@@ -1,9 +1,11 @@
+const baseUrl = ''
 const LINKS = {
     admin:{
         signUp:'admin/signup'
     },
     agent:{
-        signUp:'agent/signup'
+        signUp:'agent/signup',
+        fetchAll:'agent/all'
     }
 }
 

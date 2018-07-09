@@ -9,7 +9,9 @@ class AgentStore extends GenericStore {
         this.apiRoutes = Constants.LINKS.agent
         extendObservable(this, {
             isLoading:false,
-            agentSignUp: action(this.agentSignUp)
+            agents:[],
+            agentSignUp: action(this.agentSignUp),
+            fetchAllAgents: action(this.fetchAllAgents)
         })  
     }
 
@@ -26,8 +28,21 @@ class AgentStore extends GenericStore {
             runInAction(() => this.isLoading = false)
             // log this erorr using a logger
             console.error(e)
-        }finally{
-            
+        }
+    }
+
+    async fetchAllAgents () {
+        //this.isLoading = true
+        try{
+            const result = await this.httpClient.get(this.apiRoutes.fetchAll)
+            const {data} = result
+            runInAction(()=>{
+                this.agents = data.message
+                this.isLoading = false
+            })
+        }catch(e){
+            console.log(e)
+            runInAction(()=>this.isLoading = false)
         }
     }
 }

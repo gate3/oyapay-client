@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-plugin-mobx-deep-action": "^1.6.1",
     "bootswatch": "^4.1.1",
     "fbemitter": "^2.1.1",
     "mobx": "^5.0.3",
